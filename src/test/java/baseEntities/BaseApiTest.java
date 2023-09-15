@@ -13,7 +13,7 @@ public class BaseApiTest {
     public void setupApi(){
         RestAssured.baseURI = ReadProperties.getUrl();
         RestAssured.requestSpecification = given()
-                .auth().preemptive().basic(ReadProperties.username(),ReadProperties.password())
+                .auth().preemptive().basic(ReadProperties.email(),ReadProperties.password())
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON);
     }
 }
