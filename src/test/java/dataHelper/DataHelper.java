@@ -11,4 +11,13 @@ public class DataHelper {
 
         return user;
 }
+
+    public static User getInvalidUser() {
+        User user = new User();
+        user.setEmail("invalidEmail");
+        user.setPassword("invalidPassword");
+
+        return user;
+    }
+
 }
