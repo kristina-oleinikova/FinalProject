@@ -1,7 +1,7 @@
 package dataHelper;
 
-import models.Project;
 import models.User;
+import models.Project;
 import utils.configuration.ReadProperties;
 
 public class DataHelper {
