@@ -5,7 +5,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -46,13 +45,11 @@ public class ValidInputTest extends BaseTest {
     public void clickButtonProject(){
         projectPage.addProjectButton.click();
     }
-    @SneakyThrows
     @And("Entering a value in the Summary field")
     public void enteringValue() {
         projectPage.inputSummary.sendKeys("Текст превышающий длинну в допустипые 80 символов, " +
                 "проверка на ввод колическтва символов");
-        Thread.sleep(5000);
-        Assert.assertEquals(projectPage.inputSummary.getText(),"Текст превышающий длинну в допустипые " +
+        Assert.assertEquals(projectPage.inputSummary.getAttribute("value"),"Текст превышающий длинну в допустипые " +
                 "80 символов, проверка на ввод колическтва ");
         logger.info("In the Summary field, cutting the text to 80 characters worked");
     }
