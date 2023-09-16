@@ -28,21 +28,20 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
+
+    @Override
+    public void openPageByUrl(String pagePath) {
+        super.openPageByUrl(pagePath);
+    }
     @Override
     protected By getPageIdentifier() {
-        return By.cssSelector("ui primary button");
+        return By.cssSelector("button.ui.primary.button");
     }
 
     // Блок комплексных методов
     public void login(User user) {
         emailInput.sendKeys(user.getEmail());
         passwordInput.sendKeys(user.getPassword());
-        loginButton.click();
-    }
-
-    public void loginNegative(String email, String password){
-        emailInput.sendKeys(email);
-        passwordInput.sendKeys(password);
         loginButton.click();
     }
 }

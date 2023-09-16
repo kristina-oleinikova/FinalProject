@@ -40,4 +40,6 @@ public class ProjectsPage extends BasePage {
     protected By getPageIdentifier() {
         return By.cssSelector("div.page-title__title");
     }
+
 }
+
