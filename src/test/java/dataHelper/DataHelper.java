@@ -1,6 +1,7 @@
 package dataHelper;
 
 import models.User;
+import models.Project;
 import utils.configuration.ReadProperties;
 
 public class DataHelper {
@@ -19,5 +20,11 @@ public class DataHelper {
 
         return user;
     }
-
+    public static Project getAddProject() {
+        Project addProject = new Project.Builder()
+                .withName("Project 1")
+                .withSummary("This is a summary")
+                .build();
+        return addProject;
+    }
 }
