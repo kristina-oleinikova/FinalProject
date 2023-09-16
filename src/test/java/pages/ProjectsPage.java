@@ -28,6 +28,8 @@ public class ProjectsPage extends BasePage {
     @FindBy (linkText = "Test")
     public WebElement linkProject;
 
+    @FindBy(css = "div.page-title__title")
+    public WebElement projectsTitle;
 
     // Блок инициализации
     public ProjectsPage(WebDriver driver) {
@@ -36,7 +38,7 @@ public class ProjectsPage extends BasePage {
 
     @Override
     protected By getPageIdentifier() {
-        return By.xpath("//*[@data-content = 'Projects']");
+        return By.cssSelector("div.page-title__title");
     }
 
 }

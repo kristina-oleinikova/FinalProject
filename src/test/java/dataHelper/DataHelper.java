@@ -11,6 +11,14 @@ public class DataHelper {
         user.setPassword(ReadProperties.password());
 
         return user;
+}
+
+    public static User getInvalidUser() {
+        User user = new User();
+        user.setEmail("invalidEmail");
+        user.setPassword("invalidPassword");
+
+        return user;
     }
     public static Project getAddProject() {
         Project addProject = new Project.Builder()
