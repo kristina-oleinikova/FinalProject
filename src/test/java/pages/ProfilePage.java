@@ -21,7 +21,6 @@ public class ProfilePage extends BasePage {
     public ProfilePage(WebDriver driver) {
         super(driver);
     }
-
     public void openPageByUrl(String pagePath) {
         super.openPageByUrl(pagePath);
     }
