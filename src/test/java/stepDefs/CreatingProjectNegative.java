@@ -9,14 +9,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import pages.LoginPage;
-import pages.ProjectPage;
+import pages.ProjectsPage;
 import utils.configuration.ReadProperties;
 
 public class CreatingProjectNegative extends BaseTest {
     static Logger logger = LogManager.getLogger(CreatingProjectNegative.class);
     private BaseTest baseTest;
     protected LoginPage loginPage;
-    protected ProjectPage projectPage;
+    protected ProjectsPage projectPage;
     public CreatingProjectNegative (BaseTest baseTest){
         this.baseTest = baseTest;
     }
@@ -37,17 +37,17 @@ public class CreatingProjectNegative extends BaseTest {
     }
     @And("projects page is displayed")
     public void projectsPageIsDisplayed() {
-        Assert.assertTrue(new ProjectPage(driver).isPageOpened());
+        Assert.assertTrue(new ProjectsPage(driver).isPageOpened());
         logger.info("Projects page is opened");
     }
     @And("user click project button")
     public void clickButtonProject(){
-        projectPage = new ProjectPage(driver);
+        projectPage = new ProjectsPage(driver);
         projectPage.addProjectButton.click();
     }
     @And("user click button Add Project")
     public void clickAddProjectButton(){
-        projectPage = new ProjectPage(driver);
+        projectPage = new ProjectsPage(driver);
         projectPage.addButtonDialogBorder.click();
     }
     @Then("message {} is displayed")
