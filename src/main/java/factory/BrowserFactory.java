@@ -11,6 +11,7 @@ import utils.configuration.ReadProperties;
 
 import java.sql.DriverManager;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class BrowserFactory {
     private WebDriver driver = null;
@@ -40,6 +41,7 @@ public class BrowserFactory {
     public WebDriver getDriver(){
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 
         return this.driver;
     }
