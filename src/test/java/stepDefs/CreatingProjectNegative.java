@@ -35,18 +35,19 @@ public class CreatingProjectNegative extends BaseTest {
     public void clickLoginButton(){
         loginPage.loginButton.click();
     }
-    @Then("projects page is displayed")
+    @And("projects page is displayed")
     public void projectsPageIsDisplayed() {
-        projectPage = new ProjectPage(driver);
-        Assert.assertTrue(projectPage.isPageOpened());
+        Assert.assertTrue(new ProjectPage(driver).isPageOpened());
         logger.info("Projects page is opened");
     }
     @And("user click project button")
     public void clickButtonProject(){
+        projectPage = new ProjectPage(driver);
         projectPage.addProjectButton.click();
     }
     @And("user click button Add Project")
     public void clickAddProjectButton(){
+        projectPage = new ProjectPage(driver);
         projectPage.addButtonDialogBorder.click();
     }
     @Then("message {} is displayed")

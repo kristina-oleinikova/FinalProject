@@ -4,7 +4,7 @@ Feature: Creating a negative test project
     Given browser open
     When user enter email kristina.oleinikova95@gmail.com and password AQAcourse123
     * user clicks login button
-    Then projects page is displayed
+    * projects page is displayed
     * user click project button
     * user click button Add Project
     Then message The name field is required. is displayed

@@ -9,17 +9,17 @@ import org.openqa.selenium.support.FindBy;
 public class ProjectPage extends BasePage {
     @FindBy(xpath = "//*[@data-content = 'Projects']")
     public WebElement projectsButton;
-    @FindBy(xpath = "//button")
+    @FindBy(css = "button.ui.basic.compact.button")
     public WebElement addProjectButton;
     @FindBy (xpath = "//*[@data-content = 'My work']")
     public WebElement myWorkButton;
     @FindBy (xpath = "//*[@data-content = 'Admin']")
     public WebElement adminButton;
-    @FindBy (className = "dialog__border")
+    @FindBy (css = "div.dialog-container__inner")
     public WebElement dialogBorder;
-    @FindBy (className = "ui button primary")
+    @FindBy (css = "button.ui.primary.button")
     public WebElement addButtonDialogBorder;
-    @FindBy (xpath = "/html/body/div[4]/div/div/div/div[3]/div/div[1]/div[2]")
+    @FindBy (css = "div.inline-tip.help")
     public WebElement tooltip;
     @FindBy (xpath = "//*[@data-target = 'name']")
     public WebElement inputName;
@@ -36,7 +36,5 @@ public class ProjectPage extends BasePage {
     protected By getPageIdentifier() {
         return By.xpath("//*[@data-content = 'Projects']");
     }
-
-    // Блок комплексных методов
 
 }
