@@ -32,6 +32,6 @@ public class EditSettingsDialogPage extends BasePage {
     }
 
     public boolean isRemoveButtonEnabled(){
-        return waitService.waitForVisibility(new EditSettingsDialogPage(driver).removeButton).isEnabled();
+        return waitService.waitForElementToBeClickable(new EditSettingsDialogPage(driver).removeButton).isEnabled();
     }
 }
