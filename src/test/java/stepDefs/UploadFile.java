@@ -2,17 +2,13 @@ package stepDefs;
 
 import baseEntities.BaseTest;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import pages.EditSettingsDialogPage;
 import pages.ProfilePage;
-import pages.ProjectsPage;
-import services.WaitService;
 
 public class UploadFile extends BaseTest {
     static Logger logger = LogManager.getLogger(UploadFile.class);
@@ -20,7 +16,6 @@ public class UploadFile extends BaseTest {
     private BaseTest baseTest;
     private ProfilePage profilePage;
     private EditSettingsDialogPage editSettingsDialogPage;
-    private WaitService waitService;
 
     public UploadFile(BaseTest baseTest) {
         this.baseTest = baseTest;
