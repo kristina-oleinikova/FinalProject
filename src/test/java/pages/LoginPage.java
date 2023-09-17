@@ -29,7 +29,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void openPageByUrl(String pagePath) {
+    public void openPageByUrl() {
         super.openPageByUrl(pagePath);
     }
     @Override

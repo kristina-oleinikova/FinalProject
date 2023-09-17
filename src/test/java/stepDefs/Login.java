@@ -28,7 +28,7 @@ public class Login extends BaseTest {
     @Given("open login page")
     public void openLoginPage() {
         loginPage = new LoginPage(driver);
-        loginPage.openPageByUrl("/auth/login");
+        loginPage.openPageByUrl();
         logger.info("Login page is opened");
     }
 
