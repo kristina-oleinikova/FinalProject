@@ -5,13 +5,11 @@ import dataHelper.DataHelper;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import pages.LoginPage;
-import pages.ProjectsPage;
-import utils.configuration.ReadProperties;
+import pages.ProjectsDashboardPage;
 
 public class Login extends BaseTest {
     static Logger logger = LogManager.getLogger(Login.class);
@@ -56,7 +54,7 @@ public class Login extends BaseTest {
 
     @Then("Projects dashboard page is opened")
     public void projectsDashboardPageIsOpened() {
-        Assert.assertTrue(new ProjectsPage(driver).isPageOpened());
+        Assert.assertTrue(new ProjectsDashboardPage(driver).isPageOpened());
         logger.info("Projects dashboard page is opened");
     }
 }

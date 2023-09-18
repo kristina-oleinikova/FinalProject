@@ -8,15 +8,17 @@ import io.cucumber.java.en.When;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import pages.AddProjectDialogPage;
 import pages.LoginPage;
-import pages.ProjectsPage;
+import pages.ProjectsDashboardPage;
 import utils.configuration.ReadProperties;
 
 public class CreatingProjectNegative extends BaseTest {
     static Logger logger = LogManager.getLogger(CreatingProjectNegative.class);
     private BaseTest baseTest;
     protected LoginPage loginPage;
-    protected ProjectsPage projectPage;
+    protected ProjectsDashboardPage projectPage;
+    protected AddProjectDialogPage addProjectDialogPage;
     public CreatingProjectNegative (BaseTest baseTest){
         this.baseTest = baseTest;
     }
@@ -37,18 +39,18 @@ public class CreatingProjectNegative extends BaseTest {
     }
     @And("projects page is displayed")
     public void projectsPageIsDisplayed() {
-        Assert.assertTrue(new ProjectsPage(driver).isPageOpened());
+        Assert.assertTrue(new ProjectsDashboardPage(driver).isPageOpened());
         logger.info("Projects page is opened");
     }
     @And("user click project button")
     public void clickButtonProject(){
-        projectPage = new ProjectsPage(driver);
+        projectPage = new ProjectsDashboardPage(driver);
         projectPage.addProjectButton.click();
     }
     @And("user click button Add Project")
     public void clickAddProjectButton(){
-        projectPage = new ProjectsPage(driver);
-        projectPage.addButtonDialogBorder.click();
+        addProjectDialogPage = new AddProjectDialogPage(driver);
+        addProjectDialogPage.addButtonDialogBorder.click();
     }
     @Then("message {} is displayed")
     public void messageIsDisplayed(String message) {

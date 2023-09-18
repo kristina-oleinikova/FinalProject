@@ -8,15 +8,17 @@ import io.cucumber.java.en.When;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import pages.AddProjectDialogPage;
 import pages.LoginPage;
-import pages.ProjectsPage;
+import pages.ProjectsDashboardPage;
 import utils.configuration.ReadProperties;
 
 public class LimitValuesTest extends BaseTest {
     static Logger logger = LogManager.getLogger(LimitValuesTest.class);
     private BaseTest baseTest;
     protected LoginPage loginPage;
-    protected ProjectsPage projectsPage;
+    protected ProjectsDashboardPage projectsPage;
+    protected AddProjectDialogPage addProjectDialogPage;
     public LimitValuesTest(BaseTest baseTest){
         this.baseTest = baseTest;
     }
@@ -37,7 +39,7 @@ public class LimitValuesTest extends BaseTest {
     }
     @Then("Project page is displayed")
     public void projectsPageIsDisplayed() {
-        projectsPage = new ProjectsPage(driver);
+        projectsPage = new ProjectsDashboardPage(driver);
         Assert.assertTrue(projectsPage.isPageOpened());
         logger.info("Projects page is opened");
     }
@@ -47,11 +49,12 @@ public class LimitValuesTest extends BaseTest {
     }
     @And("Entering a value in the Summary field")
     public void enteringValue() {
-        projectsPage.inputSummary.sendKeys("Текст превышающий длинну в допустипые 80 символов, " +
-                "проверка на ввод колическтва символов");
-        Assert.assertEquals(projectsPage.inputSummary.getAttribute("value"),"Текст " +
-                "превышающий длинну в допустипые " +
-                "80 символов, проверка на ввод колическтва ");
+        addProjectDialogPage = new AddProjectDialogPage(driver);
+        addProjectDialogPage.inputSummary.sendKeys("Текст превышающий длинну в допустимые 80 символов, " +
+                "проверка на ввод количества символов");
+        Assert.assertEquals(addProjectDialogPage.inputSummary.getAttribute("value"),"Текст " +
+                "превышающий длинну в допустимые " +
+                "80 символов, проверка на ввод количества ");
         logger.info("In the Summary field, cutting the text to 80 characters worked");
     }
 }
