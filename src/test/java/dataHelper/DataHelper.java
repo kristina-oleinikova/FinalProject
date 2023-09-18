@@ -20,10 +20,10 @@ public class DataHelper {
 
         return user;
     }
-    public static Project getAddProject() {
+    public static Project getAddProject(String name, String summary) {
         Project addProject = new Project.Builder()
-                .withName("Project 1")
-                .withSummary("This is a summary")
+                .withName(name)
+                .withSummary(summary)
                 .build();
         return addProject;
     }

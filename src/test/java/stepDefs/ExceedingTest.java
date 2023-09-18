@@ -11,14 +11,14 @@ import org.testng.Assert;
 import pages.LoginPage;
 import pages.MilestonesPage;
 import pages.ProjectPage;
-import pages.ProjectsPage;
+import pages.ProjectsDashboardPage;
 import utils.configuration.ReadProperties;
 
 public class ExceedingTest extends BaseTest {
     static Logger logger = LogManager.getLogger(ExceedingTest.class);
     private BaseTest baseTest;
     protected LoginPage loginPage;
-    protected ProjectsPage projectsPage;
+    protected ProjectsDashboardPage projectsPage;
     protected ProjectPage projectPage;
     protected MilestonesPage milestonesPage;
     public ExceedingTest(BaseTest baseTest){
@@ -42,7 +42,7 @@ public class ExceedingTest extends BaseTest {
     }
     @And("User click link project")
     public void clickLinkProject(){
-        projectsPage = new ProjectsPage(driver);
+        projectsPage = new ProjectsDashboardPage(driver);
         projectsPage.linkProject.click();
         logger.info("Project is opened");
     }

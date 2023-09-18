@@ -9,14 +9,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import pages.LoginPage;
-import pages.ProjectsPage;
+import pages.ProjectsDashboardPage;
 import utils.configuration.ReadProperties;
 
 public class TooltipTest extends BaseTest {
     static Logger logger = LogManager.getLogger(TooltipTest.class);
     private BaseTest baseTest;
     protected LoginPage loginPage;
-    protected ProjectsPage projectPage;
+    protected ProjectsDashboardPage projectPage;
     public TooltipTest (BaseTest baseTest){
         this.baseTest = baseTest;
     }
@@ -37,7 +37,7 @@ public class TooltipTest extends BaseTest {
     }
     @Then("project page is displayed")
     public void projectsPageIsDisplayed() {
-        projectPage = new ProjectsPage(driver);
+        projectPage = new ProjectsDashboardPage(driver);
         Assert.assertTrue(projectPage.isPageOpened());
         logger.info("Projects page is opened");
     }
