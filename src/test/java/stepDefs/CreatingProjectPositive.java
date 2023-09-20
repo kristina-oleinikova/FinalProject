@@ -4,6 +4,7 @@ import baseEntities.BaseTest;
 import dataHelper.DataHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import models.Project;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -11,6 +12,10 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.AddProjectDialogPage;
 import pages.ProjectsPage;
+import services.WaitService;
+
+import javax.xml.crypto.Data;
+import java.util.List;
 
 public class CreatingProjectPositive extends BaseTest {
     static Logger logger = LogManager.getLogger(CreatingProjectPositive.class);
@@ -37,18 +42,17 @@ public class CreatingProjectPositive extends BaseTest {
         logger.info("AddProject dialog page is opened");
     }
 
-    @And("user fills the form with valid data and submit")
+    @Then("user creates new project")
     public void createProject() {
         addProjectDialogPage = new AddProjectDialogPage(driver);
-        addProjectDialogPage.fillForm(DataHelper.getAddProject("TestUI","TestTest"));
-        logger.info("Project has been created");
-    }
 
+        String createdProjectName = DataHelper.getAddProject().getName();
+        String createdProjectSummary = DataHelper.getAddProject().getSummary();
 
-    @Then("created project is displayed in grid")
-    public void createdProjectIsDisplayedInGrid() {
-        WebElement createdProject = driver.findElement(By.cssSelector("tr[data-name=\"TestUI\"]"));
-        Assert.assertTrue(createdProject.isDisplayed());
-        logger.info("Created project is displayed in the grid");
+        addProjectDialogPage.fillForm(createdProjectName,createdProjectSummary);
+
+        WebElement createdProjectInList = driver.findElement(By.cssSelector("tr[data-name='"+createdProjectName+"']"));
+        Assert.assertTrue(createdProjectInList.isDisplayed());
+        logger.info("New project has been created");
     }
 }

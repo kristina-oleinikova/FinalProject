@@ -1,5 +1,6 @@
 package dataHelper;
 
+import com.github.javafaker.Faker;
 import models.User;
 import models.Project;
 import utils.configuration.ReadProperties;
@@ -20,11 +21,11 @@ public class DataHelper {
 
         return user;
     }
-    public static Project getAddProject(String name, String summary) {
-        Project addProject = new Project.Builder()
-                .withName(name)
-                .withSummary(summary)
-                .build();
-        return addProject;
+    public static Project getAddProject() {
+        Project project = new Project();
+        Faker faker = new Faker();
+        project.setName(faker.name().name());
+        project.setSummary(faker.name().name());
+        return project;
     }
 }
