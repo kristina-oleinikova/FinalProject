@@ -38,7 +38,6 @@ public class ProfilePage extends BasePage {
     }
 
     // Блок атомарных методов
-
     public boolean isEditSettingsDialogWindowDisplayed(){
         editSettingsDialogPage = new EditSettingsDialogPage(driver);
         return waitService.waitForVisibility(editSettingsDialogPage.editSettingsDialogHeader).isDisplayed();

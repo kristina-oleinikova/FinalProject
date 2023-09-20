@@ -5,5 +5,4 @@ Feature: Create Project entity
     When user with valid credentials logged in
     * user navigates to Projects page
     * user clicks on Project button
-    * user fills the form with valid data and submit
-    Then created project is displayed in grid
+    Then user creates new project

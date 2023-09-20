@@ -36,4 +36,10 @@ public class AddProjectDialogPage extends BasePage {
         inputSummary.sendKeys(project.getSummary());
         addButtonDialogBorder.click();
     }
+
+    public void fillForm(String name, String summary){
+        inputName.sendKeys(name);
+        inputSummary.sendKeys(summary);
+        addButtonDialogBorder.click();
+    }
 }
