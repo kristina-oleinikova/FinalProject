@@ -16,6 +16,13 @@ public class Hook extends BaseTest {
         this.baseTest = baseTest;
     }
 
+    @BeforeAll
+    public static void prepareData() {
+        expectedProject.setName(DataHelper.getAddProject().getName());
+        expectedProject.setSummary(DataHelper.getAddProject().getSummary());
+    }
+
+
     @Before
     @Step("Browser initialization")
     public void initGUIScenario(Scenario scenario) {
@@ -28,11 +35,5 @@ public class Hook extends BaseTest {
             System.out.println("Attach screenshot");
         }
         baseTest.driver.quit();
-    }
-
-    @BeforeAll
-    public static void prepareData() {
-        expectedProject.setName("dsd");
-        expectedProject.setSummary(DataHelper.getAddProject().getSummary());
     }
 }

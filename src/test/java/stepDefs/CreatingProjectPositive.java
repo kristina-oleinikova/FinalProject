@@ -1,10 +1,8 @@
 package stepDefs;
 
 import baseEntities.BaseTest;
-import dataHelper.DataHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import models.Project;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -13,7 +11,6 @@ import org.testng.Assert;
 import pages.AddProjectDialogPage;
 import pages.DeleteProjectDialogPage;
 import pages.ProjectsPage;
-import services.WaitService;
 
 public class CreatingProjectPositive extends BaseTest {
     static Logger logger = LogManager.getLogger(CreatingProjectPositive.class);
@@ -24,6 +21,10 @@ public class CreatingProjectPositive extends BaseTest {
 
     public CreatingProjectPositive(BaseTest baseTest) {
         this.baseTest = baseTest;
+    }
+
+    public WebElement createdProjectInList(){
+        return driver.findElement(By.cssSelector("tr[data-name='"+expectedProject.getName()+"']"));
     }
 
     @And("user navigates to Projects page")
@@ -44,18 +45,16 @@ public class CreatingProjectPositive extends BaseTest {
     public void createProject(){
         addProjectDialogPage = new AddProjectDialogPage(driver);
         addProjectDialogPage.fillForm(expectedProject);
-
-        WebElement createdProjectInList = driver.findElement(By.cssSelector("tr[data-name='"+expectedProject.getName()+"']"));
-        Assert.assertTrue(createdProjectInList.isDisplayed());
+        Assert.assertTrue(createdProjectInList().isDisplayed());
+        System.out.println(createdProjectInList());
         logger.info("New project has been created");
     }
 
     @And("user clicks on trashButton for created project in list")
     public void clickTrashButton(){
         addProjectDialogPage = new AddProjectDialogPage(driver);
-
-        WebElement projectInList = driver.findElement(By.cssSelector("tr[data-name='"+expectedProject.getName()+"']"));
-        projectInList.findElement(By.xpath("//*[@data-action='delete' and @class='tooltip']")).click();
+        createdProjectInList().findElement(By.xpath("//*[@data-action='delete' and @class='tooltip']"))
+                .click();
         logger.info("Confirmation dialog is opened");
     }
 
@@ -64,13 +63,13 @@ public class CreatingProjectPositive extends BaseTest {
         DeleteProjectDialogPage deleteProjectDialogPage = new DeleteProjectDialogPage(driver);
         deleteProjectDialogPage.selectCheckbox();
         deleteProjectDialogPage.deleteProjectButton.click();
+        System.out.println(createdProjectInList());
         logger.info("Confirmation dialog is closed");
     }
 
     @Then("project is in delete process")
     public void projectIsInDeleteProcess() {
-        WaitService waitService = new WaitService(driver);
-        Assert.assertTrue(waitService.waitForExists(By.xpath("//*[@class='deleted-entity']")).isDisplayed());
+        Assert.assertTrue(projectsPage.isProjectDeleted());
         logger.info("Project is deleted");
     }
 }

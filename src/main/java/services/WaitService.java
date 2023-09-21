@@ -34,7 +34,7 @@ public class WaitService {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public WebElement waitForExists(By by) {
-        return wait.until(ExpectedConditions.presenceOfElementLocated(by));
+    public WebElement waitForExists(By element) {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(element));
     }
 }

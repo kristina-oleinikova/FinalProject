@@ -36,4 +36,9 @@ public class ProjectsPage extends BasePage {
     protected By getPageIdentifier() {
         return By.cssSelector("page-header__title");
     }
+
+    // Блок атомарных методов
+    public boolean isProjectDeleted(){
+        return waitService.waitForExists(By.xpath("//*[@class='deleted-entity']")).isDisplayed();
+    }
 }
