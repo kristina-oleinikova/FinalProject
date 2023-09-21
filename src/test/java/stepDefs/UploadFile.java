@@ -43,7 +43,6 @@ public class UploadFile extends BaseTest {
     @And("user clicks on Change button")
     public void clickOnChangeButton(){
         editSettingsDialogPage = new EditSettingsDialogPage(driver);
-
         editSettingsDialogPage.changeButton.click();
         logger.info("User clicks on Change button");
     }
@@ -52,7 +51,6 @@ public class UploadFile extends BaseTest {
     public void uploadImage(){
         String pathToFile = UploadFile.class.getClassLoader().getResource("avatar.jpeg").getPath();
         editSettingsDialogPage.chooseFile.sendKeys(pathToFile);
-
         Assert.assertTrue(editSettingsDialogPage.isRemoveButtonEnabled());
         logger.info("User uploads avatar image");
     }
@@ -61,7 +59,6 @@ public class UploadFile extends BaseTest {
     public void clickSaveSettingsButton(){
         Actions actions = new Actions(driver);
         actions.moveToElement(editSettingsDialogPage.saveSettingsButton).click().build().perform();
-
         logger.info("User clicks on SaveSettings button");
     }
 
@@ -70,7 +67,6 @@ public class UploadFile extends BaseTest {
     public void theUploadedImageIsShownAsProfileAvatar() {
         profilePage = new ProfilePage(driver);
         profilePage.avatarIcon.getAttribute("scr");
-
         logger.info("The uploaded image is shown as avatar image");
     }
 }

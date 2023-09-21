@@ -21,8 +21,6 @@ public class ProjectsPage extends BasePage {
     @FindBy(css = "[data-target='admin--projects--index.addButton']")
     public WebElement addProjectButton;
 
-    @FindAll(@FindBy(css = "tr[data-name]"))
-    public List<WebElement> projectsList;
 
     // Блок инициализации
     public ProjectsPage(WebDriver driver) {
@@ -37,5 +35,10 @@ public class ProjectsPage extends BasePage {
     @Override
     protected By getPageIdentifier() {
         return By.cssSelector("page-header__title");
+    }
+
+    // Блок атомарных методов
+    public boolean isProjectDeleted(){
+        return waitService.waitForExists(By.xpath("//*[@class='deleted-entity']")).isDisplayed();
     }
 }
