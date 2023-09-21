@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class DeleteProjectDialogPage extends BasePage {
     // Блок описания локаторов для элементов
-    @FindBy(css = "input[type='checkbox']")
+    @FindBy(css = "div.ui.checkbox")
     public WebElement checkbox;
 
     @FindBy(css = "button.ui.negative.button")

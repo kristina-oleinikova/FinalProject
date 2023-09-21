@@ -32,9 +32,7 @@ public class AddProjectDialogPage extends BasePage {
 
     // Блок комплексных методов
     public void fillForm(Project project){
-        inputName.sendKeys(project.getName());
-        inputSummary.sendKeys(project.getSummary());
-        addButtonDialogBorder.click();
+        fillForm(project.getName(), project.getSummary());
     }
 
     public void fillForm(String name, String summary){

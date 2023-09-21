@@ -1,5 +1,6 @@
 package services;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,5 +32,9 @@ public class WaitService {
 
     public WebElement waitForElementToBeClickable(WebElement element) {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public WebElement waitForExists(By by) {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
 }

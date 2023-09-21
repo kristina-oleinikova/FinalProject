@@ -11,11 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.AddProjectDialogPage;
+import pages.DeleteProjectDialogPage;
 import pages.ProjectsPage;
 import services.WaitService;
-
-import javax.xml.crypto.Data;
-import java.util.List;
 
 public class CreatingProjectPositive extends BaseTest {
     static Logger logger = LogManager.getLogger(CreatingProjectPositive.class);
@@ -43,16 +41,36 @@ public class CreatingProjectPositive extends BaseTest {
     }
 
     @Then("user creates new project")
-    public void createProject() {
+    public void createProject(){
         addProjectDialogPage = new AddProjectDialogPage(driver);
+        addProjectDialogPage.fillForm(expectedProject);
 
-        String createdProjectName = DataHelper.getAddProject().getName();
-        String createdProjectSummary = DataHelper.getAddProject().getSummary();
-
-        addProjectDialogPage.fillForm(createdProjectName,createdProjectSummary);
-
-        WebElement createdProjectInList = driver.findElement(By.cssSelector("tr[data-name='"+createdProjectName+"']"));
+        WebElement createdProjectInList = driver.findElement(By.cssSelector("tr[data-name='"+expectedProject.getName()+"']"));
         Assert.assertTrue(createdProjectInList.isDisplayed());
         logger.info("New project has been created");
+    }
+
+    @And("user clicks on trashButton for created project in list")
+    public void clickTrashButton(){
+        addProjectDialogPage = new AddProjectDialogPage(driver);
+
+        WebElement projectInList = driver.findElement(By.cssSelector("tr[data-name='"+expectedProject.getName()+"']"));
+        projectInList.findElement(By.xpath("//*[@data-action='delete' and @class='tooltip']")).click();
+        logger.info("Confirmation dialog is opened");
+    }
+
+    @And("user submit deleting action")
+    public void submitDelete(){
+        DeleteProjectDialogPage deleteProjectDialogPage = new DeleteProjectDialogPage(driver);
+        deleteProjectDialogPage.selectCheckbox();
+        deleteProjectDialogPage.deleteProjectButton.click();
+        logger.info("Confirmation dialog is closed");
+    }
+
+    @Then("project is in delete process")
+    public void projectIsInDeleteProcess() {
+        WaitService waitService = new WaitService(driver);
+        Assert.assertTrue(waitService.waitForExists(By.xpath("//*[@class='deleted-entity']")).isDisplayed());
+        logger.info("Project is deleted");
     }
 }

@@ -1,6 +1,7 @@
 package stepDefs;
 
 import baseEntities.BaseTest;
+import dataHelper.DataHelper;
 import factory.BrowserFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -32,6 +33,6 @@ public class Hook extends BaseTest {
     @BeforeAll
     public static void prepareData() {
         expectedProject.setName("dsd");
-        expectedProject.setSummary("dsd1");
+        expectedProject.setSummary(DataHelper.getAddProject().getSummary());
     }
 }

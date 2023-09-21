@@ -21,8 +21,6 @@ public class ProjectsPage extends BasePage {
     @FindBy(css = "[data-target='admin--projects--index.addButton']")
     public WebElement addProjectButton;
 
-    @FindAll(@FindBy(css = "tr[data-name]"))
-    public List<WebElement> projectsList;
 
     // Блок инициализации
     public ProjectsPage(WebDriver driver) {
