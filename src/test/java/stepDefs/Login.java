@@ -33,7 +33,6 @@ public class Login extends BaseTest {
     @When("user with invalid credentials logged in")
     public void loginWithInvalidCredentials() {
         loginPage = new LoginPage(driver);
-
         loginPage.login(DataHelper.getInvalidUser());
         logger.info("User enters invalid credentials");
     }
@@ -47,7 +46,6 @@ public class Login extends BaseTest {
     @When("user with valid credentials logged in")
     public void successfulLogin() {
         loginPage = new LoginPage(driver);
-
         loginPage.login(DataHelper.getStandartUser());
         logger.info("User enters valid credentials");
     }

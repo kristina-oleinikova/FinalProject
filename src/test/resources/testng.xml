@@ -5,5 +5,5 @@
         <classes>
             <class name="runner.RunCucumberTest"/>
         </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>
