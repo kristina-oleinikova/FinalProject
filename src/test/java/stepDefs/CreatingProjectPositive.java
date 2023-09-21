@@ -46,7 +46,6 @@ public class CreatingProjectPositive extends BaseTest {
         addProjectDialogPage = new AddProjectDialogPage(driver);
         addProjectDialogPage.fillForm(expectedProject);
         Assert.assertTrue(createdProjectInList().isDisplayed());
-        System.out.println(createdProjectInList());
         logger.info("New project has been created");
     }
 
@@ -63,7 +62,6 @@ public class CreatingProjectPositive extends BaseTest {
         DeleteProjectDialogPage deleteProjectDialogPage = new DeleteProjectDialogPage(driver);
         deleteProjectDialogPage.selectCheckbox();
         deleteProjectDialogPage.deleteProjectButton.click();
-        System.out.println(createdProjectInList());
         logger.info("Confirmation dialog is closed");
     }
 
