@@ -5,7 +5,6 @@ import io.restassured.http.ContentType;
 import models.Project;
 import org.apache.http.protocol.HTTP;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import utils.configuration.ReadProperties;
 
 import static io.restassured.RestAssured.given;

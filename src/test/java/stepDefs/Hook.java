@@ -30,7 +30,7 @@ public class Hook extends BaseTest {
         expectedProject.setSummary(DataHelper.getAddProject().getSummary());
     }
 
-//    @Before
+//    @BeforeAll
 //    public void setupApi(){
 //        RestAssured.baseURI = ReadProperties.getUrl();
 //        RestAssured.requestSpecification = given()
