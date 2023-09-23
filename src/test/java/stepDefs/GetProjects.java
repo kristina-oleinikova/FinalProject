@@ -21,7 +21,7 @@ public class GetProjects{
         logger.info("Request is sent");
     }
 
-    @Then("response code is validated")
+    @Then("response status code is validated")
     public void responseCodeIsValidated() {
         int actualCode = response.then().extract().statusCode();
         Assert.assertEquals(actualCode, 200);
