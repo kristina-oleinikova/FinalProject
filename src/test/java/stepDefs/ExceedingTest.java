@@ -56,7 +56,6 @@ public class ExceedingTest extends BaseTest {
         milestonesPage = new MilestonesPage(driver);
         milestonesPage.addButton.click();
         logger.info("Milestone Page is opened");
-
     }
     @And("User create milestone")
     public void createMilestone(){
@@ -65,11 +64,9 @@ public class ExceedingTest extends BaseTest {
         milestonesPage.panelStartDate.sendKeys("160920230");
         milestonesPage.addMilestoneButton.click();
     }
-
     @Then("Message {} is displayed")
     public void milestoneCreate(String error) {
         Assert.assertEquals(error,"The start date does not match the format Y-m-d.");
         logger.error(error);
-
     }
 }

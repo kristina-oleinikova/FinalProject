@@ -5,4 +5,4 @@ Feature: Valid input test
     * User click login button
     * Project page is displayed
     * Click project button
-    * Entering a value in the Summary field
+    Then Entering a value in the Summary field
