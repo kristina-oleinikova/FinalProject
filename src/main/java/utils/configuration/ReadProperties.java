@@ -35,6 +35,10 @@ public class ReadProperties {
         return Integer.parseInt(properties.getProperty("timeout"));
     }
 
+    public static String token() {
+        return properties.getProperty("token");
+    }
+
     public static boolean isHeadless() {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }
