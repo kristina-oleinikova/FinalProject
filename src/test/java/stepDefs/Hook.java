@@ -13,6 +13,8 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpHeaders;
 import org.apache.http.protocol.HTTP;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import utils.configuration.ReadProperties;
 
 import static io.restassured.RestAssured.given;
@@ -48,8 +50,15 @@ public class Hook extends BaseTest {
 
     @After
     public void tearDown(Scenario scenario) {
-        if (scenario.isFailed()) {
-            System.out.println("Attach screenshot");
+        try {
+            String screenshotName = scenario.getName().replaceAll("", "_");
+            if (scenario.isFailed()) {
+                TakesScreenshot ts = (TakesScreenshot) driver;
+                byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+                scenario.attach(screenshot, "img/png", screenshotName);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         baseTest.driver.quit();
     }
