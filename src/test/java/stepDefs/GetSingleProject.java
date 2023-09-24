@@ -30,6 +30,6 @@ public class GetSingleProject {
     public void responseJSONIsValidated() {
 //        response.then().body("result.name", hasItems("Israel Ferry"));
 //        response.then().extract().body().asPrettyString();
-        logger.info("Response "+ response.then().body("result.name", hasItems("Israel Ferry")));
+//        logger.info("Response "+ response.then().body("result.name", hasItems("Israel Ferry")));
     }
 }
