@@ -3,20 +3,15 @@ package stepDefs;
 import baseEntities.BaseTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import io.restassured.mapper.ObjectMapperType;
+import io.restassured.response.Response;
 import models.Run;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import io.restassured.response.Response;
-import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import utils.Endpoints;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.is;
-
-
 
 public class PostAddRunTest extends BaseTest {
     static Logger logger = LogManager.getLogger(PostAddRunTest.class);
