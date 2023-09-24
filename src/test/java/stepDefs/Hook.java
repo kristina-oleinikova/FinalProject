@@ -29,6 +29,7 @@ public class Hook extends BaseTest {
     @Step("Browser initialization")
     public void initGUIScenario(Scenario scenario) {
         baseTest.driver = new BrowserFactory().getDriver();
+        baseTest.setupApi();
     }
 
     @After
