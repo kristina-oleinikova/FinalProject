@@ -25,11 +25,17 @@ public class GetSingleProject {
         logger.info("Request is sent");
     }
 
+    @Then("status code is validated")
+    public void statusCodeIsValidated() {
+        int actualCode = response.then().extract().statusCode();
+        Assert.assertEquals(actualCode, 200);
+        logger.info("Status code is 200");
+    }
 
-    @Then("response JSON is validated")
+    @Then("received ProjectId is validated")
     public void responseJSONIsValidated() {
-//        response.then().body("result.name", hasItems("Israel Ferry"));
-//        response.then().extract().body().asPrettyString();
-//        logger.info("Response "+ response.then().body("result.name", hasItems("Israel Ferry")));
+        int id = response.getBody().jsonPath().getInt("result.id");
+        logger.info("Project id: " + id);
+        logger.info("Response: \n " + response.getBody().asPrettyString());
     }
 }

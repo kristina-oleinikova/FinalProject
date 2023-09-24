@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
                 "html:target/site/cucumber-pretty.html",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
         glue = "stepDefs",
-        tags = ""
+        tags = "23"
 )
 public class RunCucumberTest extends AbstractTestNGCucumberTests {
 
