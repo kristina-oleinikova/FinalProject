@@ -33,11 +33,11 @@ public class LimitValuesTest extends BaseTest {
         loginPage.passwordInput.sendKeys(password);
         logger.info("Login page is opened");
     }
-    @When("User click login button")
+    @And("User click login button")
     public void clickLoginButton(){
         loginPage.loginButton.click();
     }
-    @Then("Project page is displayed")
+    @And("Project page is displayed")
     public void projectsPageIsDisplayed() {
         projectsPage = new ProjectsDashboardPage(driver);
         Assert.assertTrue(projectsPage.isPageOpened());
@@ -47,7 +47,7 @@ public class LimitValuesTest extends BaseTest {
     public void clickButtonProject(){
         projectsPage.addProjectButton.click();
     }
-    @And("Entering a value in the Summary field")
+    @Then("Entering a value in the Summary field")
     public void enteringValue() {
         addProjectDialogPage = new AddProjectDialogPage(driver);
         addProjectDialogPage.inputSummary.sendKeys("Текст превышающий длинну в допустимые 80 символов, " +
