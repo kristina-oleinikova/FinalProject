@@ -8,6 +8,8 @@ import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import io.qameta.allure.Step;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class Hook extends BaseTest {
     private BaseTest baseTest;
@@ -31,8 +33,15 @@ public class Hook extends BaseTest {
 
     @After
     public void tearDown(Scenario scenario) {
-        if (scenario.isFailed()) {
-            System.out.println("Attach screenshot");
+        try {
+            String screenshotName = scenario.getName().replaceAll("", "_");
+            if (scenario.isFailed()) {
+                TakesScreenshot ts = (TakesScreenshot) driver;
+                byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+                scenario.attach(screenshot, "img/png", screenshotName);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         baseTest.driver.quit();
     }
