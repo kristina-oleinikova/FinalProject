@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ProjectPage extends BasePage {
-    @FindBy(css = "a.ui.positive.small.button")
+    @FindBy(xpath = "//i[contains(@class, 'icon-sidebar-milestones')]")
     public WebElement buttonMilestones;
 
     public ProjectPage(WebDriver driver) {
