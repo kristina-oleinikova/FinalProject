@@ -1,3 +1,4 @@
+@gui
 Feature: Valid input test
   Scenario: Input Test
     Given open loginPage

@@ -1,3 +1,4 @@
+@gui
 Feature: Creating a negative test project
 
   Scenario: Creating a project without a name

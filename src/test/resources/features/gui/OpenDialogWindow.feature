@@ -1,3 +1,4 @@
+@gui
 Feature: ProfilePage: Open dialog window
 
   Scenario: EditSettings dialog window is opened by clicking on the corresponding button

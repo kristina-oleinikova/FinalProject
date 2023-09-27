@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 @Test
 @CucumberOptions(
         features = {"src/test/resources/features"},
-        plugin = {"json:target/cucumber.json",
+        plugin = {"json:target/json/file.json",
                 "html:target/site/cucumber-pretty.html",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
         glue = "stepDefs",
