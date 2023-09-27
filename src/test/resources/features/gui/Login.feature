@@ -1,3 +1,4 @@
+@gui
 Feature: Login flow
 
   Scenario: Login with valid credentials

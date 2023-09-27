@@ -1,3 +1,4 @@
+@gui
 Feature: Create Project entity
 
   Scenario: Positive flow: Create Project entity

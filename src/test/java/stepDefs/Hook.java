@@ -13,7 +13,6 @@ import io.restassured.http.ContentType;
 import org.apache.http.protocol.HTTP;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.testng.annotations.BeforeTest;
 import utils.configuration.ReadProperties;
 
 import static io.restassured.RestAssured.given;
@@ -26,24 +25,27 @@ public class Hook extends BaseTest {
     }
 
     @BeforeAll(order = 10001)
+    @Step("Prepare data for GUI tests")
     public static void prepareData() {
         expectedProject.setName(DataHelper.getAddProject().getName());
         expectedProject.setSummary(DataHelper.getAddProject().getSummary());
     }
-
 
     @Before(value = "@gui",order = 10002)
     @Step("Browser initialization")
     public void initGUIScenario(Scenario scenario) {
         baseTest.driver = new BrowserFactory().getDriver();
     }
+
     @Before(value = "@api")
+    @Step("API Authentication")
     public void setupApi(){
         RestAssured.baseURI = ReadProperties.getUrl();
         RestAssured.requestSpecification = given()
                 .auth().oauth2(ReadProperties.token())
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON);
     }
+
 
     @After(value = "@gui")
     public void tearDown(Scenario scenario) {
