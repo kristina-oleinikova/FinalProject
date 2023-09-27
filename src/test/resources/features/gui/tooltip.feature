@@ -5,6 +5,6 @@ Feature: Display a pop-up message
     Given login page open
     When enter email kristina.oleinikova95@gmail.com and password AQAcourse123
     * user click login button
-    Then project page is displayed
+    * project page is displayed
     * click project button
     Then tooltip is displayed

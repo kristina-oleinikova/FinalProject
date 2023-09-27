@@ -35,7 +35,7 @@ public class TooltipTest extends BaseTest {
     public void clickLoginButton(){
         loginPage.loginButton.click();
     }
-    @Then("project page is displayed")
+    @And("project page is displayed")
     public void projectsPageIsDisplayed() {
         projectPage = new ProjectsDashboardPage(driver);
         Assert.assertTrue(projectPage.isPageOpened());
