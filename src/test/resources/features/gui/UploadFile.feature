@@ -1,3 +1,4 @@
+@gui
 Feature: Fresh User: Upload avatar image
 
   Scenario: User uploads first profile image

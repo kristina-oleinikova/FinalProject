@@ -9,14 +9,13 @@ import org.testng.Assert;
 import utils.Endpoints;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.hasItems;
 
-public class GetSingleProject {
+public class GetSingleProject{
     static Logger logger = LogManager.getLogger(GetSingleProject.class);
     private Response response;
-    @Given("GET project by id")
-    public void getProjectById() {
-        int projectId = 65;
+
+    @Given("GET project by projectId {}")
+    public void getProjectById(int projectId) {
         String endpoint = Endpoints.GET_PROJECT +projectId;
 
         response = given()

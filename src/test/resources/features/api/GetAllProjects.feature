@@ -1,3 +1,4 @@
+@api
 Feature: Get All Projects
 
   Scenario: Authorized user get list of all projects
