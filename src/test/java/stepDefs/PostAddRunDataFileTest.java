@@ -1,6 +1,5 @@
 package stepDefs;
 
-import baseEntities.BaseTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
@@ -13,13 +12,9 @@ import java.io.File;
 
 import static io.restassured.RestAssured.given;
 
-public class PostAddRunDataFileTest extends BaseTest {
+public class PostAddRunDataFileTest {
     static Logger logger = LogManager.getLogger(PostAddRunDataFileTest.class);
-    private BaseTest baseTest;
     private Response response;
-    public PostAddRunDataFileTest(BaseTest baseTest){
-        this.baseTest = baseTest;
-    }
     @Given("preparing data for creating a launch")
     public void preparingDataForCreatingALaunch() {
         int projectId = 60;

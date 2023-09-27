@@ -1,6 +1,5 @@
 package stepDefs;
 
-import baseEntities.BaseTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
@@ -13,11 +12,7 @@ import static io.restassured.RestAssured.given;
 
 public class GetRunTestNegative {
     static Logger logger = LogManager.getLogger(GetRunTestNegative.class);
-    private BaseTest baseTest;
     private Response response;
-    public GetRunTestNegative(BaseTest baseTest){
-        this.baseTest = baseTest;
-    }
     @Given("sending a request to obtain a run id that does not exist")
     public void sendingARequestForARun() {
         int runId = 900;

@@ -1,6 +1,5 @@
 package stepDefs;
 
-import baseEntities.BaseTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.mapper.ObjectMapperType;
@@ -13,13 +12,9 @@ import utils.Endpoints;
 
 import static io.restassured.RestAssured.given;
 
-public class PostAddRunTest extends BaseTest {
+public class PostAddRunTest{
     static Logger logger = LogManager.getLogger(PostAddRunTest.class);
-    private BaseTest baseTest;
     private Response response;
-    public PostAddRunTest(BaseTest baseTest){
-        this.baseTest = baseTest;
-    }
     @Given("Preparing data for creating a launch")
     public void sendingDataToCreateRun() {
         int projectId = 60;

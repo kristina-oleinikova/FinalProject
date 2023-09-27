@@ -1,6 +1,5 @@
 package stepDefs;
 
-import baseEntities.BaseTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
@@ -13,11 +12,7 @@ import static io.restassured.RestAssured.given;
 
 public class GetMilestonesNegativeTest {
     static Logger logger = LogManager.getLogger(GetMilestonesNegativeTest.class);
-    private BaseTest baseTest;
     private Response response;
-    public GetMilestonesNegativeTest(BaseTest baseTest){
-        this.baseTest = baseTest;
-    }
     @Given("User submits a request to get milestones")
     public void userSubmitsARequestToGetMilestones() {
         int projectId = 60;
