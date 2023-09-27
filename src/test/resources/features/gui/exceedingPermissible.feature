@@ -1,3 +1,4 @@
+@gui
 Feature: Test for entering data exceeding the permissible limits
 
   Scenario: exceeding permissible test
