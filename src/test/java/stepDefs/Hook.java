@@ -25,6 +25,7 @@ public class Hook extends BaseTest {
     }
 
     @BeforeAll(order = 10001)
+    @Step("Prepare data for GUI tests")
     public static void prepareData() {
         expectedProject.setName(DataHelper.getAddProject().getName());
         expectedProject.setSummary(DataHelper.getAddProject().getSummary());
@@ -37,6 +38,7 @@ public class Hook extends BaseTest {
     }
 
     @Before(value = "@api")
+    @Step("API Authentication")
     public void setupApi(){
         RestAssured.baseURI = ReadProperties.getUrl();
         RestAssured.requestSpecification = given()
