@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MilestonesPage extends BasePage {
-    @FindBy(css = "button.ui.positive.button")
+    @FindBy(css = "button.ui.compact.button")
     public WebElement addButton;
     @FindBy(xpath = "//*[@data-target = 'name']")
     public WebElement inputNameMilestone;
@@ -23,7 +23,7 @@ public class MilestonesPage extends BasePage {
     }
     @Override
     protected By getPageIdentifier() {
-        return By.cssSelector("button.ui.positive.button");
+        return By.cssSelector("button.ui.compact.button");
     }
 }
 
