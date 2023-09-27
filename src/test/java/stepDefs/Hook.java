@@ -8,8 +8,15 @@ import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import io.qameta.allure.Step;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import org.apache.http.protocol.HTTP;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.annotations.BeforeTest;
+import utils.configuration.ReadProperties;
+
+import static io.restassured.RestAssured.given;
 
 public class Hook extends BaseTest {
     private BaseTest baseTest;
@@ -18,21 +25,27 @@ public class Hook extends BaseTest {
         this.baseTest = baseTest;
     }
 
-    @BeforeAll
+    @BeforeAll(order = 10001)
     public static void prepareData() {
         expectedProject.setName(DataHelper.getAddProject().getName());
         expectedProject.setSummary(DataHelper.getAddProject().getSummary());
     }
 
 
-    @Before
+    @Before(value = "@gui",order = 10002)
     @Step("Browser initialization")
     public void initGUIScenario(Scenario scenario) {
         baseTest.driver = new BrowserFactory().getDriver();
-        baseTest.setupApi();
+    }
+    @Before(value = "@api")
+    public void setupApi(){
+        RestAssured.baseURI = ReadProperties.getUrl();
+        RestAssured.requestSpecification = given()
+                .auth().oauth2(ReadProperties.token())
+                .header(HTTP.CONTENT_TYPE, ContentType.JSON);
     }
 
-    @After
+    @After(value = "@gui")
     public void tearDown(Scenario scenario) {
         try {
             String screenshotName = scenario.getName().replaceAll("", "_");
