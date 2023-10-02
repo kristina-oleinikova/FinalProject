@@ -28,9 +28,9 @@ public class GetProjects{
         logger.info("Status code is 200");
     }
 
-    @Then("list of project is available")
-    public void listOfProjectIsAvailable() {
-        response.then();
-        logger.info("Available Project's list: \n " + response.getBody().asPrettyString());
+    @Then("check total projects")
+    public void checkTotalProjects() {
+        int total = response.getBody().jsonPath().getInt("total");
+        logger.info("Total projects: " + total);
     }
 }
