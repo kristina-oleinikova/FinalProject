@@ -27,12 +27,14 @@ public class PostAddRunDataFileTest {
                 .post(Endpoints.POST_ADD_RUN);
         logger.info("request has been sent");
     }
+
     @Then("checking code status")
     public void checkingCodeStatus() {
         int responseCode = response.then().extract().statusCode();
         Assert.assertEquals(responseCode, 201);
         logger.info("Status code is 201");
     }
+
     @Then("checking id run")
     public void checkingIdRun() {
         int id = response.getBody().jsonPath().getInt("id");

@@ -22,6 +22,7 @@ public class GetRunTestNegative {
                 .get(Endpoints.GET_RUN);
         logger.info("request has been sent");
     }
+
     @Then("checking code status response")
     public void checkingCodeStatusResponse() {
         int responseCode = response.then().extract().statusCode();

@@ -29,12 +29,14 @@ public class PostAddRunTest{
                 .post(Endpoints.POST_ADD_RUN);
         logger.info("request has been sent");
     }
+
     @Then("Checking code status")
     public void checkingCodeStatus() {
         int responseCode = response.then().extract().statusCode();
         Assert.assertEquals(responseCode, 201);
         logger.info("Status code is 201");
     }
+
     @Then("Checking id run")
     public void checkingIdRun() {
         int id = response.getBody().jsonPath().getInt("id");

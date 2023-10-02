@@ -19,13 +19,16 @@ public class LimitValuesTest extends BaseTest {
     protected LoginPage loginPage;
     protected ProjectsDashboardPage projectsPage;
     protected AddProjectDialogPage addProjectDialogPage;
+
     public LimitValuesTest(BaseTest baseTest){
         this.baseTest = baseTest;
     }
+
     @Given("open loginPage")
     public void openLoginPage() {
         driver.get(ReadProperties.getUrl());
     }
+
     @When("Enter email {} and password {}")
     public void enterEmailAndPassword(String email, String password) {
         loginPage = new LoginPage(driver);
@@ -33,20 +36,24 @@ public class LimitValuesTest extends BaseTest {
         loginPage.passwordInput.sendKeys(password);
         logger.info("Login page is opened");
     }
+
     @And("User click login button")
     public void clickLoginButton(){
         loginPage.loginButton.click();
     }
+
     @And("Project page is displayed")
     public void projectsPageIsDisplayed() {
         projectsPage = new ProjectsDashboardPage(driver);
         Assert.assertTrue(projectsPage.isPageOpened());
         logger.info("Projects page is opened");
     }
+
     @And("Click project button")
     public void clickButtonProject(){
         projectsPage.addProjectButton.click();
     }
+
     @Then("Entering a value in the Summary field")
     public void enteringValue() {
         addProjectDialogPage = new AddProjectDialogPage(driver);

@@ -17,13 +17,16 @@ public class TooltipTest extends BaseTest {
     private BaseTest baseTest;
     protected LoginPage loginPage;
     protected ProjectsDashboardPage projectPage;
+
     public TooltipTest (BaseTest baseTest){
         this.baseTest = baseTest;
     }
+
     @Given("login page open")
     public void loginPageOpen() {
         driver.get(ReadProperties.getUrl());
     }
+
     @When("enter email {} and password {}")
     public void enterEmailAndPassword(String email, String password) {
         loginPage = new LoginPage(driver);
@@ -31,20 +34,24 @@ public class TooltipTest extends BaseTest {
         loginPage.passwordInput.sendKeys(password);
         logger.info("Login page is opened");
     }
+
     @When("user click login button")
     public void clickLoginButton(){
         loginPage.loginButton.click();
     }
+
     @And("project page is displayed")
     public void projectsPageIsDisplayed() {
         projectPage = new ProjectsDashboardPage(driver);
         Assert.assertTrue(projectPage.isPageOpened());
         logger.info("Projects page is opened");
     }
+
     @And("click project button")
     public void clickButtonProject(){
         projectPage.addProjectButton.click();
     }
+
     @Then("tooltip is displayed")
     public void tooltipIsDisplayed() {
         Assert.assertTrue(projectPage.tooltip.isEnabled());
