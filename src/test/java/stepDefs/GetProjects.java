@@ -23,8 +23,7 @@ public class GetProjects{
 
     @Then("response status code is validated")
     public void responseCodeIsValidated() {
-        int actualCode = response.then().extract().statusCode();
-        Assert.assertEquals(actualCode, 200);
+        Assert.assertEquals(200, response.getStatusCode());
         logger.info("Status code is 200");
     }
 
